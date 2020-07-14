@@ -24,7 +24,7 @@ describe('Login', () => {
     });
 
     it(`should see two login buttons`, async () => {
-        await loginPo.wait(3000);
+        expect(await loginPo.isOpen()).toEqual(true);
         expect(await loginPo.loginButtons.count()).toEqual(3);
     });
 

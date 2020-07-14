@@ -3,6 +3,10 @@ import { BasePo } from './base.po';
 
 class LoginPo extends BasePo {
 
+    get container() {
+        return element(by.id('gc_login_widget_container'));
+    }
+
     get loginButtons() {
         return $$('#gc_login_widget_container button');
     }
@@ -31,14 +35,19 @@ class LoginPo extends BasePo {
         super();
     }
 
+    public async isOpen(): Promise<boolean> {
+        await this.waitForElementVisible(this.container);
+        return this.isElementDisplayed(this.container);
+    }
+
     public async goToPasswordScreen(): Promise<void> {
         await this.clickOnElement(loginPo.continueBtn);
-        await this.wait(1000);
+        await this.waitForElementVisible(this.passwordField);
     }
 
     public async goToLocationScreen(): Promise<void> {
         await this.clickOnElement(loginPo.continueBtn);
-        await this.wait(1000);
+        await this.waitForElementVisible(this.firstNameField);
     }
 
     public async fillEmailField(text: string | number): Promise<void> {
@@ -48,7 +57,6 @@ class LoginPo extends BasePo {
     public async fillPasswordField(text: string | number): Promise<void> {
         await this.typeElementText(this.passwordField, text);
     }
-
 
 }
 
