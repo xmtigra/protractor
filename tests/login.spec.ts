@@ -49,7 +49,6 @@ describe('Login', () => {
     });
 
     it(`type email ${testUser.email} on email field`, async () => {
-        await loginPo.clearElementField(loginPo.emailField);
         await loginPo.typeElementText(loginPo.emailField, testUser.email);
         expect(await loginPo.getElementValue(loginPo.emailField)).toEqual(testUser.email);
     });
@@ -65,7 +64,6 @@ describe('Login', () => {
     });
 
     it(`type password ${testUser.password} on password field`, async () => {
-        await loginPo.clearElementField(loginPo.passwordField);
         await loginPo.typeElementText(loginPo.passwordField, testUser.password);
         expect(await loginPo.getElementValue(loginPo.passwordField)).toEqual(testUser.password);
     });
