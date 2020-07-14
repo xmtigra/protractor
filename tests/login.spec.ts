@@ -49,13 +49,12 @@ describe('Login', () => {
     });
 
     it(`type email ${testUser.email} on email field`, async () => {
-        await loginPo.typeElementText(loginPo.emailField, testUser.email);
+        await loginPo.fillEmailField(testUser.email);
         expect(await loginPo.getElementValue(loginPo.emailField)).toEqual(testUser.email);
     });
 
     it(`click on continue button`, async () => {
-        await loginPo.clickOnElement(loginPo.continueBtn);
-        await loginPo.wait(3000);
+        await loginPo.goToPasswordScreen();
         expect(await loginPo.isElementDisplayed(loginPo.passwordField)).toEqual(true);
     });
 
@@ -64,13 +63,12 @@ describe('Login', () => {
     });
 
     it(`type password ${testUser.password} on password field`, async () => {
-        await loginPo.typeElementText(loginPo.passwordField, testUser.password);
+        await loginPo.fillPasswordField(testUser.password);
         expect(await loginPo.getElementValue(loginPo.passwordField)).toEqual(testUser.password);
     });
 
     it(`click on continue button`, async () => {
-        await loginPo.clickOnElement(loginPo.continueBtn);
-        await loginPo.wait(1000);
+        await loginPo.goToLocationScreen();
         expect(await loginPo.isElementDisplayed(loginPo.firstNameField)).toEqual(true);
         expect(await loginPo.isElementDisplayed(loginPo.lastNameField)).toEqual(true);
     });

@@ -31,6 +31,24 @@ class LoginPo extends BasePo {
         super();
     }
 
+    public async goToPasswordScreen(): Promise<void> {
+        await this.clickOnElement(loginPo.continueBtn);
+        await this.wait(1000);
+    }
+
+    public async goToLocationScreen(): Promise<void> {
+        await this.clickOnElement(loginPo.continueBtn);
+        await this.wait(1000);
+    }
+
+    public async fillEmailField(text: string | number): Promise<void> {
+        await this.typeElementText(this.emailField, text);
+    }
+
+    public async fillPasswordField(text: string | number): Promise<void> {
+        await this.typeElementText(this.passwordField, text);
+    }
+
 
 }
 
