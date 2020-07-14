@@ -49,6 +49,7 @@ export class BasePo {
 
     public async typeElementText(element: ElementFinder, text: string | number, timeout: number = 0): Promise<void> {
         await this.wait(timeout);
+        await this.clearElementField(element);
         await element.sendKeys(text);
     }
 
