@@ -1,5 +1,6 @@
 import { $$, browser, by, element } from 'protractor';
 import { User } from '../data/user.data';
+import { LOGIN, UI } from '../data/strings.data';
 
 // verify url
 // verify browser title
@@ -14,12 +15,12 @@ describe('Login', () => {
     const testUser = new User();
 
     beforeAll(async () => {
-        await browser.get('https://good.co/log-in/', 3000);
+        await browser.get(LOGIN.URL, 3000);
     });
 
     it(`should be on the login page`, async () => {
-        expect(await browser.getCurrentUrl()).toContain('/log-in');
-        expect(await browser.getTitle()).toEqual('Login | Good&Co');
+        expect(await browser.getCurrentUrl()).toContain(LOGIN.URL_PART);
+        expect(await browser.getTitle()).toEqual(LOGIN.TITLE);
     });
 
     it(`should see two login buttons`, async () => {
@@ -30,15 +31,15 @@ describe('Login', () => {
 
     it(`Verify text on the login buttons`, async () => {
         const loginButtons = $$('#gc_login_widget_container button');
-        expect(await loginButtons.get(1).getText()).toEqual('login');
-        expect(await loginButtons.get(2).getText()).toEqual('login');
+        expect(await loginButtons.get(1).getText()).toEqual(LOGIN.BUTTON_1);
+        expect(await loginButtons.get(2).getText()).toEqual(LOGIN.BUTTON_2);
     });
 
     it(`Verify css properties login buttons`, async () => {
         const loginButtons = $$('#gc_login_widget_container button');
-        expect(await loginButtons.get(1).getCssValue('font-family')).toEqual('Montserrat');
-        expect(await loginButtons.get(1).getCssValue('color')).toEqual('rgba(255, 255, 255, 1)');
-        expect(await loginButtons.get(1).getCssValue('height')).toEqual('40px');
+        expect(await loginButtons.get(1).getCssValue('font-family')).toEqual(UI.PRIMARY_FONT);
+        expect(await loginButtons.get(1).getCssValue('color')).toEqual(UI.WHITE_COLOR);
+        expect(await loginButtons.get(1).getCssValue('height')).toEqual(UI.BUTTON_HEIGHT);
     });
 
     it(`click on first login button`, async () => {
