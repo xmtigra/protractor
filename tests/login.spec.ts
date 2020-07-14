@@ -29,56 +29,56 @@ describe('Login', () => {
     });
 
     it(`Verify text on the login buttons`, async () => {
-        expect(await loginPo.loginButtons.get(1).getText()).toEqual(LOGIN.BUTTON_1);
-        expect(await loginPo.loginButtons.get(2).getText()).toEqual(LOGIN.BUTTON_2);
+        expect(await loginPo.getElementText(loginPo.loginButtons.get(1))).toEqual(LOGIN.BUTTON_1);
+        expect(await loginPo.getElementText(loginPo.loginButtons.get(2))).toEqual(LOGIN.BUTTON_2);
     });
 
     it(`Verify css properties login buttons`, async () => {
-        expect(await loginPo.loginButtons.get(1).getCssValue('font-family')).toEqual(UI.PRIMARY_FONT);
-        expect(await loginPo.loginButtons.get(1).getCssValue('color')).toEqual(UI.WHITE_COLOR);
-        expect(await loginPo.loginButtons.get(1).getCssValue('height')).toEqual(UI.BUTTON_HEIGHT);
+        expect(await loginPo.getElementCssValue(loginPo.loginButtons.get(1), 'font-family')).toEqual(UI.PRIMARY_FONT);
+        expect(await loginPo.getElementCssValue(loginPo.loginButtons.get(1), 'color')).toEqual(UI.WHITE_COLOR);
+        expect(await loginPo.getElementCssValue(loginPo.loginButtons.get(1), 'height')).toEqual(UI.BUTTON_HEIGHT);
     });
 
     it(`click on first login button`, async () => {
-        await loginPo.loginButtons.get(1).click();
-        expect(await loginPo.emailField.isDisplayed()).toEqual(true);
+        await loginPo.clickOnElement(loginPo.loginButtons.get(1));
+        expect(await loginPo.isElementDisplayed(loginPo.emailField)).toEqual(true);
     });
 
     it(`should continue button is disabled`, async () => {
-        expect(await loginPo.continueBtn.isEnabled()).toEqual(false);
+        expect(await loginPo.isElementEnabled(loginPo.continueBtn)).toEqual(false);
     });
 
     it(`type email ${testUser.email} on email field`, async () => {
-        await loginPo.emailField.clear();
-        await loginPo.emailField.sendKeys(testUser.email);
-        expect(await loginPo.emailField.getAttribute('value')).toEqual(testUser.email);
+        await loginPo.clearElementField(loginPo.emailField);
+        await loginPo.typeElementText(loginPo.emailField, testUser.email);
+        expect(await loginPo.getElementValue(loginPo.emailField)).toEqual(testUser.email);
     });
 
     it(`click on continue button`, async () => {
-        await loginPo.continueBtn.click();
+        await loginPo.clickOnElement(loginPo.continueBtn);
         await loginPo.wait(3000);
-        expect(await loginPo.passwordField.isDisplayed()).toEqual(true);
+        expect(await loginPo.isElementDisplayed(loginPo.passwordField)).toEqual(true);
     });
 
     it(`should continue button is disabled`, async () => {
-        expect(await loginPo.continueBtn.isEnabled()).toEqual(false);
+        expect(await loginPo.isElementEnabled(loginPo.continueBtn)).toEqual(false);
     });
 
     it(`type password ${testUser.password} on password field`, async () => {
-        await loginPo.passwordField.clear();
-        await loginPo.passwordField.sendKeys(testUser.password);
-        expect(await loginPo.passwordField.getAttribute('value')).toEqual(testUser.password);
+        await loginPo.clearElementField(loginPo.passwordField);
+        await loginPo.typeElementText(loginPo.passwordField, testUser.password);
+        expect(await loginPo.getElementValue(loginPo.passwordField)).toEqual(testUser.password);
     });
 
     it(`click on continue button`, async () => {
-        await loginPo.continueBtn.click();
+        await loginPo.clickOnElement(loginPo.continueBtn);
         await loginPo.wait(1000);
-        expect(await loginPo.firstNameField.isDisplayed()).toEqual(true);
-        expect(await loginPo.lastNameField.isDisplayed()).toEqual(true);
+        expect(await loginPo.isElementDisplayed(loginPo.firstNameField)).toEqual(true);
+        expect(await loginPo.isElementDisplayed(loginPo.lastNameField)).toEqual(true);
     });
 
     it(`should continue button is disabled`, async () => {
-        expect(await loginPo.continueBtn.isEnabled()).toEqual(false);
+        expect(await loginPo.isElementEnabled(loginPo.continueBtn)).toEqual(false);
     });
 
     afterAll(async () => {
