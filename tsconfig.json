@@ -5,7 +5,8 @@
     "moduleResolution": "node",
     "inlineSourceMap": true,
     "declaration": false,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
+    "strict": true,
     "lib": [
       "esnext"
     ],

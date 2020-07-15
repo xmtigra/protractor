@@ -22,7 +22,7 @@ export class BasePo {
         await browser.sleep(ms);
     }
 
-    public async waitForElementText(element: ElementFinder, text: string, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}) {
+    public async waitForElementText(element: ElementFinder, text: string, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -37,7 +37,7 @@ export class BasePo {
         throw new Error(`Element ${element.locator()} is not containing specified text: ${text} after maximum retries (${maxRetries}), Error message: ${error.name.toString()}`);
     }
 
-    public async waitForElementVisible(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}) {
+    public async waitForElementVisible(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -54,7 +54,7 @@ export class BasePo {
         throw new Error(`Element ${element.locator()} is not visible after maximum retries (${maxRetries}), Error message: ${error.name.toString()}`);
     }
 
-    public async waitForElementInvisible(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}) {
+    public async waitForElementInvisible(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -69,7 +69,7 @@ export class BasePo {
         throw new Error(`Element ${element.locator()} is still visible after maximum retries (${maxRetries}), Error message: ${error.name.toString()}`);
     }
 
-    public async waitForElementClickable(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}) {
+    public async waitForElementClickable(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -84,7 +84,7 @@ export class BasePo {
         throw new Error(`Element ${element.locator()} is not clickable after maximum retries (${maxRetries}), Error message: ${error.name.toString()}`);
     }
 
-    public async waitForListCountChanged(list: ElementArrayFinder, expectedCount: number, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}) {
+    public async waitForListCountChanged(list: ElementArrayFinder, expectedCount: number, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -103,7 +103,7 @@ export class BasePo {
         throw new Error(`List ${list.locator()} count does not changed after maximum retries (${maxRetries}), Error message: ${error.name.toString()}`);
     }
 
-    public async waitForElementToBeSelected(tgtElement: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}) {
+    public async waitForElementToBeSelected(tgtElement: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
         let currentRetry: number = 0;
         let error: Error;
         do {
