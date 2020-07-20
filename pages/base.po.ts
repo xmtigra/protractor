@@ -175,7 +175,10 @@ export class BasePo {
 
     public async getElementCssValue(element: ElementFinder, value: string): Promise<string> {
         await this.isElementPresent(element);
-        const css = await element.getCssValue(value);
+        let css = await element.getCssValue(value);
+        if(value === 'color') {
+            String(css).split(" ").join("");
+        }
         return String(css).toLowerCase();
     }
 

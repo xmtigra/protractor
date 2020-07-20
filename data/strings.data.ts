@@ -8,6 +8,6 @@ export enum LOGIN {
 
 export enum UI {
     PRIMARY_FONT = 'montserrat',
-    WHITE_COLOR = 'rgba(255, 255, 255, 1)',
+    WHITE_COLOR = 'rgba(255,255,255,1)',
     BUTTON_HEIGHT = '40px',
 }
