@@ -52,7 +52,7 @@ const config = {
     // },
 
     // Spec patterns are relative to the current working directory when protractor is called.
-    specs: ['tests/**/*spec.ts'],
+    specs: ['specs/**/*.ts'],
 
     // If want to target a specific spec file (eg while creating a new one)
     // specs: [ 'specs/login/loginGlobalHeader.spec.js' ],

@@ -2,19 +2,18 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": ["esnext"],
+    "strict": false,
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node", "protractor", "jasmine"],
+    "esModuleInterop": true,
     "inlineSourceMap": true,
-    "declaration": false,
-    "noImplicitAny": false,
-    "strict": true,
-    "lib": [
-      "esnext"
-    ],
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["lib", "framework", "specs", "data", "pages"],
+  "exclude": ["node_modules"]
 }

@@ -1,34 +1,14 @@
 import { generatorData } from './generator.data';
 
 export class User implements InterfaceUser {
-    public firstName = generatorData.generateUserFirstName();
-    public lastName = generatorData.generateUserLastName();
-    public email = generatorData.generateUserEmail();
-    public password = generatorData.generateUserPassword();
-    public position = 'Apple Creative';
-    public companyName = generatorData.generateName();
-    public zipCode = generatorData.generateZipCode();
-    public location = 'New York, NY, United States';
-
-    public withFirstName(value: string) {
-        this.firstName = value;
-        return this;
-    }
-
-    public withLastName(value: string) {
-        this.lastName = value;
-        return this;
-    }
-
-    public withEmail(value: string) {
-        this.email = value;
-        return this;
-    }
-
-    public withPassword(value: string) {
-        this.password = value;
-        return this;
-    }
+    public firstName: string = generatorData.generateUserFirstName();
+    public lastName: string = generatorData.generateUserLastName();
+    public email: string = generatorData.generateUserEmail();
+    public password: string = generatorData.generateUserPassword();
+    public position: string = 'Apple Creative';
+    public companyName: string = generatorData.generateName();
+    public zipCode: string = generatorData.generateZipCode();
+    public location: string = 'New York, NY, United States';
 
     public fullName(): string {
         return `${this.firstName} ${this.lastName}`;

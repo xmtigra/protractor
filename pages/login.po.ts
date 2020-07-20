@@ -1,5 +1,6 @@
-import { $$, by, element } from 'protractor';
+import { by, element } from 'protractor';
 import { BasePo } from './base.po';
+import { LOGIN } from '../data/strings.data';
 
 class LoginPo extends BasePo {
 
@@ -7,8 +8,12 @@ class LoginPo extends BasePo {
         return element(by.id('gc_login_widget_container'));
     }
 
-    get loginButtons() {
-        return $$('#gc_login_widget_container button');
+    get loginBtnFirst() {
+        return element.all(by.cssContainingText('[type="button"]', LOGIN.BUTTON_1)).get(0);
+    }
+
+    get loginBtnSecond() {
+        return element.all(by.cssContainingText('[type="button"]', LOGIN.BUTTON_1)).get(1);
     }
 
     get emailField() {

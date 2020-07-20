@@ -38,6 +38,7 @@ export class BasePo {
     }
 
     public async waitForElementVisible(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
+        await this.isElementPresent(element);
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -70,6 +71,7 @@ export class BasePo {
     }
 
     public async waitForElementClickable(element: ElementFinder, { timeout = this.defaultTimeout, maxRetries = this.defaultUIRetries } = {}): Promise<void> {
+        await this.isElementPresent(element);
         let currentRetry: number = 0;
         let error: Error;
         do {
@@ -173,7 +175,8 @@ export class BasePo {
 
     public async getElementCssValue(element: ElementFinder, value: string): Promise<string> {
         await this.isElementPresent(element);
-        return element.getCssValue(value);
+        const css = await element.getCssValue(value);
+        return String(css).toLowerCase();
     }
 
     public async getElementValue(element: ElementFinder): Promise<string> {

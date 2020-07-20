@@ -1,32 +1,32 @@
-const faker = require('faker');
+import faker from 'faker';
 
 class GeneratorData {
 
-    public generateUserFirstName() {
+    public generateUserFirstName(): string {
         return faker.name.firstName();
     }
 
-    public generateLocation() {
+    public generateLocation(): string {
         return faker.address.county();
     }
 
-    public generateUserLastName() {
+    public generateUserLastName(): string {
         return faker.name.lastName();
     }
 
-    public generateUrl() {
+    public generateUrl(): string {
         return faker.internet.url();
     }
 
-    public generateZipCode() {
+    public generateZipCode(): string {
         return faker.address.zipCode();
     }
 
-    public generateUserEmail() {
+    public generateUserEmail(): string {
         return 'test2-' + this.generateRandomHash() + '@yopmail.com';
     }
 
-    public generateUserPassword(length = 8) {
+    public generateUserPassword(length = 8): string {
         let password = faker.internet.password(length, false, '[a-zA-Z0-9]');
         if (password.match(/^[0-9]+$/) !== null) {
             password = this.generateUserPassword(length);
@@ -34,15 +34,11 @@ class GeneratorData {
         return password;
     }
 
-    public generateName() {
+    public generateName(): string {
         return faker.company.companyName(0);
     }
 
-    public generateDescription(wordCount = 4) {
-        return faker.lorem.sentence(wordCount);
-    }
-
-    public generateRandomHash() {
+    public generateRandomHash(): string {
         return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
     }
 

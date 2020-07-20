@@ -1,6 +1,6 @@
-import { User } from '../data/user.data';
-import { loginPo } from '../pages/login.po';
-import { LOGIN, UI } from '../data/strings.data';
+import {loginPo} from '../pages/login.po';
+import {LOGIN, UI} from '../data/strings.data';
+import {User} from "../data/user.data";
 
 // verify url
 // verify browser title
@@ -10,9 +10,9 @@ import { LOGIN, UI } from '../data/strings.data';
 // verify button state
 // verify element text
 
-describe('Login', () => {
+const testUser = new User();
 
-    const testUser = new User();
+describe('Login', () => {
 
     beforeAll(async () => {
         await loginPo.navigateTo(LOGIN.URL);
@@ -23,24 +23,28 @@ describe('Login', () => {
         expect(await loginPo.getTitle()).toEqual(LOGIN.TITLE);
     });
 
-    it(`should see two login buttons`, async () => {
+    it(`should see login widget on the page`, async () => {
         expect(await loginPo.isOpen()).toEqual(true);
-        expect(await loginPo.loginButtons.count()).toEqual(3);
     });
 
-    it(`Verify text on the login buttons`, async () => {
-        expect(await loginPo.getElementText(loginPo.loginButtons.get(1))).toEqual(LOGIN.BUTTON_1);
-        expect(await loginPo.getElementText(loginPo.loginButtons.get(2))).toEqual(LOGIN.BUTTON_2);
+    it(`Verify text on the first login button`, async () => {
+        expect(await loginPo.isElementDisplayed(loginPo.loginBtnFirst)).toEqual(true);
+        expect(await loginPo.getElementText(loginPo.loginBtnFirst)).toEqual(LOGIN.BUTTON_1);
+    });
+
+    it(`Verify text on the second login button`, async () => {
+        expect(await loginPo.isElementDisplayed(loginPo.loginBtnSecond)).toEqual(true);
+        expect(await loginPo.getElementText(loginPo.loginBtnSecond)).toEqual(LOGIN.BUTTON_2);
     });
 
     it(`Verify css properties login buttons`, async () => {
-        expect(await loginPo.getElementCssValue(loginPo.loginButtons.get(1), 'font-family')).toEqual(UI.PRIMARY_FONT);
-        expect(await loginPo.getElementCssValue(loginPo.loginButtons.get(1), 'color')).toEqual(UI.WHITE_COLOR);
-        expect(await loginPo.getElementCssValue(loginPo.loginButtons.get(1), 'height')).toEqual(UI.BUTTON_HEIGHT);
+        expect(await loginPo.getElementCssValue(loginPo.loginBtnFirst, 'font-family')).toEqual(UI.PRIMARY_FONT);
+        expect(await loginPo.getElementCssValue(loginPo.loginBtnFirst, 'color')).toEqual(UI.WHITE_COLOR);
+        expect(await loginPo.getElementCssValue(loginPo.loginBtnFirst, 'height')).toEqual(UI.BUTTON_HEIGHT);
     });
 
     it(`click on first login button`, async () => {
-        await loginPo.clickOnElement(loginPo.loginButtons.get(1));
+        await loginPo.clickOnElement(loginPo.loginBtnFirst);
         expect(await loginPo.isElementDisplayed(loginPo.emailField)).toEqual(true);
     });
 
