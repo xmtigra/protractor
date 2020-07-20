@@ -1,11 +1,18 @@
 {
   "name": "protractor-typescript",
   "version": "1.0.0",
-  "description": "Runs Protractor E2E tests from a Typescript setup",
+  "description": "Runs E2E tests on the protractor Framework with the Typescript",
   "author": {
     "name": "Andriy Pyvovarchuk"
   },
-  "license": "ISC",
+  "keywords": [
+    "protractor",
+    "TypeScript",
+    "PageObject",
+    "faker",
+    "jasmine"
+  ],
+  "license": "ISC"
   "scripts": {
     "postinstall": "./node_modules/.bin/webdriver-manager update",
     "test": "protractor protractor.conf.ts"
