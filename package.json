@@ -12,7 +12,7 @@
     "faker",
     "jasmine"
   ],
-  "license": "ISC"
+  "license": "ISC",
   "scripts": {
     "postinstall": "./node_modules/.bin/webdriver-manager update",
     "test": "protractor protractor.conf.ts"
