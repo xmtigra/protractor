@@ -1,19 +1,10 @@
 import { by, element } from 'protractor';
 import { BasePo } from './base.po';
-import { LOGIN } from '../data/strings.data';
 
 class LoginPo extends BasePo {
 
     get container() {
         return element(by.id('gc_login_widget_container'));
-    }
-
-    get loginBtnFirst() {
-        return element.all(by.cssContainingText('[type="button"]', LOGIN.BUTTON_1)).get(0);
-    }
-
-    get loginBtnSecond() {
-        return element.all(by.cssContainingText('[type="button"]', LOGIN.BUTTON_1)).get(1);
     }
 
     get emailField() {

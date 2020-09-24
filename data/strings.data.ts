@@ -2,8 +2,7 @@ export enum LOGIN {
     TITLE = 'Login | Good&Co',
     URL = 'https://good.co/log-in/',
     URL_PART = 'log-in',
-    BUTTON_1 = 'login',
-    BUTTON_2 = 'login'
+    BUTTON = 'continue'
 }
 
 export enum UI {
