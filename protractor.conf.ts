@@ -55,7 +55,7 @@ const config = {
     specs: ['specs/**/*.ts'],
 
     // If want to target a specific spec file (eg while creating a new one)
-    // specs: [ 'specs/login/loginGlobalHeader.spec.js' ],
+    // specs: [ 'specs/login.spec.ts' ],
 
 };
 
