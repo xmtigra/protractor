@@ -37,12 +37,12 @@ class LoginPo extends BasePo {
     }
 
     public async goToPasswordScreen(): Promise<void> {
-        await this.clickOnElement(loginPo.continueBtn);
+        await this.clickOnElement(this.continueBtn);
         await this.waitForElementVisible(this.passwordField);
     }
 
     public async goToLocationScreen(): Promise<void> {
-        await this.clickOnElement(loginPo.continueBtn);
+        await this.clickOnElement(this.continueBtn);
         await this.waitForElementVisible(this.firstNameField);
     }
 
