@@ -1,5 +1,6 @@
-import {browser, by, element} from "protractor";
 import {GOOGLE, GOOGLE_UI} from "../data/strings.data";
+import {googlePo} from "../pages/google.po";
+import {googleResultPo} from "../pages/googleResult.po";
 
 describe('Google', () => {
 
@@ -11,44 +12,44 @@ describe('Google', () => {
     });
 
     it('Go to google.com page ', async () => {
-        await browser.get(GOOGLE.URL, 2000);
-        expect(await browser.getCurrentUrl()).toContain(GOOGLE.URL);
-        expect(await browser.getTitle()).toEqual(GOOGLE.TITLE);
+        await googlePo.navigateTo(GOOGLE.URL);
+        expect(await googlePo.getCurrentUrl()).toContain(GOOGLE.URL);
+        expect(await googlePo.getTitle()).toEqual(GOOGLE.TITLE);
     });
 
     it('verify is element displayed', async () => {
-        expect(await element(by.css('#hplogo')).isDisplayed()).toEqual(true);
+        expect(await googlePo.logoEl.isDisplayed()).toEqual(true);
     });
 
     it('verify element state', async () => {
-        expect(await element.all(by.css('.gNO89b')).get(1).isEnabled()).toEqual(true);
+        expect(await googlePo.submitButtons.get(1).isEnabled()).toEqual(true);
     });
 
     it('verify input value', async () => {
-        expect(await element(by.css('.gLFyf.gsfi')).getAttribute('value')).toEqual('');
+        expect(await googlePo.searchInput.getAttribute('value')).toEqual('');
     });
 
     it('verify image src', async () => {
-        expect(await element(by.css('#hplogo')).getAttribute('src')).toContain(GOOGLE.LOGO_SRC);
+        expect(await googlePo.logoEl.getAttribute('src')).toContain(GOOGLE.LOGO_SRC);
     });
 
     it('verify element text', async () => {
-        expect(await element(by.css('.Q8LRLc')).getText()).toEqual(GOOGLE.COUNTRY);
+        expect(await googlePo.countryEl.getText()).toEqual(GOOGLE.COUNTRY);
     });
 
     it('verify css properties', async () => {
-        expect(await element(by.css('.Q8LRLc')).getCssValue('font-size')).toEqual(GOOGLE_UI.FONT_SIZE);
+        expect(await googlePo.countryEl.getCssValue('font-size')).toEqual(GOOGLE_UI.FONT_SIZE);
     });
 
     it('Fill some text in the input search', async () => {
-        await element(by.css('.gLFyf.gsfi')).sendKeys(testSearchWorld);
-        expect(await element(by.css('.gLFyf.gsfi')).getAttribute('value')).toEqual(testSearchWorld);
+        await googlePo.searchInput.sendKeys(testSearchWorld);
+        expect(await googlePo.searchInput.getAttribute('value')).toEqual(testSearchWorld);
     });
 
     it('Click on the submit button', async () => {
-        await element.all(by.css('.gNO89b')).get(1).click();
-        await browser.sleep(2000);
-        expect(await element(by.css('[data-hveid="CAIQAA"] .iUh30.Zu0yb.tjvcx')).getText()).toContain(testSearchSite);
+        await googlePo.submitButtons.get(1).click();
+        await googlePo.wait(2000);
+        expect(await googleResultPo.firstSiteURL.getText()).toContain(testSearchSite);
     });
 
     afterAll(async () => {
