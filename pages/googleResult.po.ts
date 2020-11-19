@@ -11,6 +11,10 @@ class GoogleResultPo extends BasePo {
         super();
     }
 
+    public async isOpen(): Promise<boolean> {
+        return this.isElementDisplayed(this.firstSiteURL);
+    }
+
 }
 
 export const googleResultPo = new GoogleResultPo();

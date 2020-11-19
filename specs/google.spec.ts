@@ -18,38 +18,37 @@ describe('Google', () => {
     });
 
     it('verify is element displayed', async () => {
-        expect(await googlePo.logoEl.isDisplayed()).toEqual(true);
+        expect(await googlePo.isElementDisplayed(googlePo.logoEl)).toEqual(true);
     });
 
     it('verify element state', async () => {
-        expect(await googlePo.submitButtons.get(1).isEnabled()).toEqual(true);
+        expect(await googlePo.isElementEnabled(googlePo.submitButtons.get(1))).toEqual(true);
     });
 
     it('verify input value', async () => {
-        expect(await googlePo.searchInput.getAttribute('value')).toEqual('');
+        expect(await googlePo.getElementValue(googlePo.searchInput)).toEqual('');
     });
 
     it('verify image src', async () => {
-        expect(await googlePo.logoEl.getAttribute('src')).toContain(GOOGLE.LOGO_SRC);
+        expect(await googlePo.getElementAttribute(googlePo.logoEl, 'src')).toContain(GOOGLE.LOGO_SRC);
     });
 
     it('verify element text', async () => {
-        expect(await googlePo.countryEl.getText()).toEqual(GOOGLE.COUNTRY);
+        expect(await googlePo.getElementText(googlePo.countryEl)).toEqual(GOOGLE.COUNTRY);
     });
 
     it('verify css properties', async () => {
-        expect(await googlePo.countryEl.getCssValue('font-size')).toEqual(GOOGLE_UI.FONT_SIZE);
+        expect(await googlePo.getElementCssValue(googlePo.countryEl, 'font-size')).toEqual(GOOGLE_UI.FONT_SIZE);
     });
 
     it('Fill some text in the input search', async () => {
-        await googlePo.searchInput.sendKeys(testSearchWorld);
-        expect(await googlePo.searchInput.getAttribute('value')).toEqual(testSearchWorld);
+        await googlePo.fillSearchInput(testSearchWorld);
+        expect(await googlePo.getElementValue(googlePo.searchInput)).toEqual(testSearchWorld);
     });
 
     it('Click on the submit button', async () => {
-        await googlePo.submitButtons.get(1).click();
-        await googlePo.wait(2000);
-        expect(await googleResultPo.firstSiteURL.getText()).toContain(testSearchSite);
+        await googlePo.sendForm();
+        expect(await googleResultPo.getElementText(googleResultPo.firstSiteURL)).toContain(testSearchSite);
     });
 
     afterAll(async () => {
